@@ -24,6 +24,10 @@ export class AppComponent implements OnInit {
       )
   }
 
+  sampleMethod(someString: string){
+    alert(someString)
+  }
+
   //call the api on loading of the component to get
   //initial data
   ngOnInit(){

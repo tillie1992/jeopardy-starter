@@ -10,7 +10,7 @@ export class AnswerComponent implements OnInit {
   userScore: number = 0;
   userAnswer: string;
   @Input() questionInfo;
-  @Output() finishedCheckingAnswer = new EventEmitter<void>(); 
+  @Output() finishedCheckingAnswer = new EventEmitter<string>(); 
 
   constructor() { }
 
@@ -22,7 +22,7 @@ export class AnswerComponent implements OnInit {
       this.userScore += this.questionInfo.value;
     }
     this.userAnswer = "";
-    this.finishedCheckingAnswer.emit();
+    this.finishedCheckingAnswer.emit("the string from the child");
   }
 
 }
