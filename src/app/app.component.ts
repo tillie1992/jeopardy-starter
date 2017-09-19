@@ -9,9 +9,6 @@ import {JeopardyService } from './jeopardy.service';
 export class AppComponent implements OnInit {
   title = 'app';
 
-  userScore: number = 0;
-  userAnswer: string;
-
   questionInfo;
 
   constructor(private jeopardyService: JeopardyService){}
@@ -25,14 +22,6 @@ export class AppComponent implements OnInit {
           console.log(this.questionInfo.answer)
         }
       )
-  }
-
-  checkAnswer(){
-    if(this.userAnswer == this.questionInfo.answer){
-      this.userScore += this.questionInfo.value;
-    }
-    this.userAnswer = "";
-    this.getDataFromService();
   }
 
   //call the api on loading of the component to get

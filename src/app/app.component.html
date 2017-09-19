@@ -7,8 +7,7 @@
   <b>the point value is:</b> {{questionInfo.value}}
   <br>
   <br>
-  <input [(ngModel)]="userAnswer" type="text">&nbsp;<button (click)="checkAnswer()">Submit Answer</button>
-  <br>
-  <br>
-  Your Score: {{userScore}}
+  
+
+  <app-answer (finishedCheckingAnswer)="getDataFromService()" [questionInfo]="questionInfo"></app-answer>
 </div>
