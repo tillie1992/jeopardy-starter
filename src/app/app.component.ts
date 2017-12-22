@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import {JeopardyService } from './jeopardy.service';
+
 
 @Component({
   selector: 'app-root',
@@ -7,13 +8,17 @@ import {JeopardyService } from './jeopardy.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'app';
+  title ='app';
 
+  hasAnswered: boolean=false;
   questionInfo;
+  playerAnswer:string;
+  playerTotal= 0;
 
   constructor(private jeopardyService: JeopardyService){}
 
   getDataFromService(){
+    this.hasAnswered=false;
     this.jeopardyService.getQuestionInfo()
       .subscribe(
         questionInfo => {
@@ -22,8 +27,18 @@ export class AppComponent implements OnInit {
       )
   }
 
+clickSubmit(){
+  this.hasAnswered=true;
+  if(this.playerAnswer==this.questionInfo.answer){
+    this.playerTotal = this.playerTotal + this.questionInfo.value
+  }
+  return this.playerTotal
+}
   ngOnInit(){
     this.getDataFromService()
   }
 
 }
+
+
+
